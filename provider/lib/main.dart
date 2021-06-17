@@ -42,12 +42,12 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('rebuild stromu');
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(''),
-      ),
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -67,14 +67,12 @@ class MyHomePage extends StatelessWidget {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
+
           children: <Widget>[
             Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '${context.watch<Counter>().getCounter}',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            GetCounterText(),
           ],
         ),
       ),
@@ -84,5 +82,16 @@ class MyHomePage extends StatelessWidget {
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class GetCounterText extends StatelessWidget {
+  GetCounterText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('rebuild');
+    return Text('${context.watch<Counter>().getCounter}',
+        key: Key('counterState'), style: Theme.of(context).textTheme.headline4);
   }
 }
